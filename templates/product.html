@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LORE</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo-colored.png' %}" alt="logo">
+        </div>
+        <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search">
+                <div class="dropdown">
+                    <li onclick="toggleDropdown(this)">All category <span class="arrow"></span></li>
+                    <ul>
+                        <li>Hot offers</li>
+                        <li>Gift boxes</li>
+                        <li>Projects</li>
+                        <li>Menu item</li>
+                    </ul>
+                </div>
+                <button class="submit-btn">Search</button>
+
+        </div>
+            <div class="user" style="display: flex;">
+                <ul class="user" id="list1">
+                    <li><img src="{% static 'images/11.png' %}" alt=""><a href="#">Profile</a></li>
+                </ul>
+                <ul class="user" id="list2">
+                    <li><img src="{% static 'images/1231.png ' %}" alt=""><a href="#">Message</a></li>
+                </ul>
+                <ul class="user" id="list3">
+                    <li><img src="{% static 'images/1.png ' %}" alt=""><a href="#">Orders</a></li>
+                </ul>
+                <ul class="user" id="list4">
+                    <li><img src="{% static 'images/2.png ' %}" alt=""><a href="#">Mycart</a></li>
+                </ul>
+            </div>
+    </header>
+    <hr>
+   <div class="navbar">
+    <nav>
+        <ul>
+            <li><a href="#">All category</a></li>
+            <li><a href="#">Hot offers</a></li>
+            <li><a href="#">Gift boxes</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Menu item</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+    <div class="region">
+        <ul>
+            <li><a href="#">English,USD</a></li>
+            <li><a href="#">Ship to <img src=" {% static 'images/icon.png' %}" alt=""></a></li>
+
+        </ul>
+    </div>
+   </div>
+   <hr>
+
+<div>
+    <nav aria-label="breadcrumb" style="background-color: rgb(244, 244, 244); padding: 1% 6%;">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="index.html">Clothing</a></li>
+            <li class="breadcrumb-item"><a href="index.html">Men's wear</a></li>
+            <li class="breadcrumb-item active" aria-current="#">Summer clothing</li>
+        </ol>
+    </nav>   
+</div>
+
+
+<!-- Category Section -->
+
+<div class="section" style="padding-left:6%; ">
+    <div class="row">
+        <div class="col-2 side_bar">
+            <hr style="color: #999191; padding: 4%;">
+            <h2>Category</h2>
+            <ul>
+                <li><a href="#">Mobile accessory</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Smartphones</a></li>
+                <li><a href="#">Modern tech</a></li>
+                <a class="see" href="#">See all</a>
+            </ul>
+
+            <hr style="color: #999191; padding: 4%;">
+            <h2>Brands</h2>
+            <form action="/submit" method="post">
+                <label> <input type="checkbox" name="option" value="Samsung"> Samsung </label><br>
+                <label><input type="checkbox" name="option" value="Apple"> Apple</label><br>
+                <label> <input type="checkbox" name="option" value="Huawei"> Huawei </label><br>
+                <label> <input type="checkbox" name="option" value="Pocco"> Pocco </label><br>
+                <label><input type="checkbox" name="option" value="Lenovo"> Lenovo </label><br>
+              
+                <a  class="see_all" href="#">See all</a>
+            </form>
+
+            <hr style="color: #999191; padding: 4%;">
+            <h2>Features</h2>
+            <form action="/submit" method="post">
+                <label> <input type="checkbox" name="option" value="Mettalic"> Mettalic </label><br>
+                <label><input type="checkbox" name="option" value="Plastic"> Plastic Cover</label><br>
+                <label> <input type="checkbox" name="option" value="Ram"> 8GB Ram </label><br>
+                <label><input type="checkbox" name="option" value="Power"> Super Power </label><br>
+                <label> <input type="checkbox" name="option" value="Memory"> Large Memory </label><br>
+                <a class="see_all" href="#">See all</a>
+            </form>
+
+
+            <hr style="color: #999191; padding: 4%;">
+            <h2>Condition</h2>
+            <form action="/submit" method="post">
+                <label> <input type="checkbox" name="option" value="Any"> Any </label><br>
+                <label><input type="checkbox" name="option" value="Refurbished"> Refurbished </label><br>
+                <label> <input type="checkbox" name="option" value="Brand new"> Brand new </label><br>
+                <label><input type="checkbox" name="option" value="Old items"> Old items </label><br>
+            </form>
+            <hr style="color: #999191; padding: 4%;">
+            <h2>Ratings</h2>
+            <form action="/submit" method="post">
+                <label> <input type="checkbox" name="option" value="Rating"> <span style="color: orangered;">★★★★★</span> </label><br>
+                <label><input type="checkbox" name="option" value="Rating"> <span style="color: orangered;">★★★★</span></label><br>
+                <label> <input type="checkbox" name="option" value="Rating"> <span style="color: orangered;">★★★</span> </label><br>
+                <label><input type="checkbox" name="option" value="Rating"> <span style="color: orangered;">★★</span> </label><br>
+            </form>
+        </div>
+
+       <div class="col-10">
+            <div class="row" style="padding-left: 5%;">
+                {% for product in page_obj %}
+                    <div class="col-3 pro" style="width: 26%; margin-top: 4%;">
+                        <img src="{{ product.image.url }}" alt="">
+                        <h2>${{ product.price }} <span class="striker">${{ product.discountprice }}</span></h2>
+                        <h5>★★★★ {{ product.rating }}</h5>
+                        <h6>{{ product.title }}</h6>
+                        <h4>{{ product.description }}</h4>
+                    </div>
+                {% endfor %}
+            </div>
+
+    </div>
+</div>
+<div class="pagination-container">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="prev">&#8592; Previous</a></li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="active"><a href="?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li><a href="?page={{ num }}">{{ num }}</a></li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="next">Next &#8594;</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+
+
+<!-- Subscriibe Box -->
+<div class="section" style="padding-top: 4%;">
+    <div class="subscribe">
+        <h2>Subscribe on your newsletter</h2>
+        <h6>Get daily news on upcoming offers from many suppliers from all over world</h6>
+        <form action="#">
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
+
+   
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 prosp">
+                <img src=" {% static 'images/logo-colored.png' %}" alt="">
+                <h3>Best information about the company gies here but know lorem ipsum is</h3>
+               
+            </div>
+
+            <div class="col-2 our-ser">
+                <h2>About</h2>
+                <ul>
+                    <li><a href="#"> About Us</a></li>
+                    <li><a href="#">Find store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 explore">
+                <h2>Partnership</h2>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Find store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 explore">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Money Refund</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 explore">
+                <h2>For users</h2>
+                <ul>
+                    <li><a href="#">Login </a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">My Orders</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-2 explore">
+                <h2>Get App</h2>
+                <ul >
+                    <img class="appstore" src=" {% static 'images/market-button.png' %}" alt="">
+                    <img class="playstore" src=" {% static 'images/market-button.png' %}" alt="">
+
+
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+      <hr style="color:#d0d0d0; border:2px solid #f4f9f9;">
+        
+</footer>
+
+    <script>
+        function toggleDropdown(element) {
+            const dropdown = element.parentElement;
+            dropdown.classList.toggle('open');
+        }
+    </script>
+        <script>
+            const totalPages = 3; // Total number of pages
+            let currentPage = 1;
+    
+            function createPagination() {
+                const pagination = document.getElementById('pagination');
+                pagination.innerHTML = '';
+    
+                // Previous button
+                const prevButton = document.createElement('button');
+                prevButton.innerHTML = '&#8592;'; // Left arrow
+                prevButton.disabled = currentPage === 1;
+                prevButton.onclick = () => changePage(currentPage - 1);
+                pagination.appendChild(prevButton);
+    
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.textContent = i;
+                    pageButton.className = i === currentPage ? 'active' : '';
+                    pageButton.onclick = () => changePage(i);
+                    pagination.appendChild(pageButton);
+                }
+    
+                // Next button
+                const nextButton = document.createElement('button');
+                nextButton.innerHTML = '&#8594;'; // Right arrow
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.onclick = () => changePage(currentPage + 1);
+                pagination.appendChild(nextButton);
+            }
+    
+            function changePage(page) {
+                if (page < 1 || page > totalPages) return;
+                currentPage = page;
+                createPagination();
+            }
+    
+            // Initialize pagination
+            createPagination();
+        </script>
+</body>
+</html>

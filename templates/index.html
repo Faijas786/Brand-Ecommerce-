@@ -1,0 +1,508 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LORE</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+ 
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logo-colored.png' %}" alt="logo">
+        </div>
+        <div class="search-container">
+                <input type="text" class="search-bar" placeholder="Search">
+                <div class="dropdown">
+                    <li onclick="toggleDropdown(this)">All category <span class="arrow"></span></li>
+                    <ul>
+                        <li>Hot offers</li>
+                        <li>Gift boxes</li>
+                        <li>Projects</li>
+                        <li>Menu item</li>
+                    </ul>
+                </div>
+                <button class="submit-btn">Search</button>
+
+        </div>
+            <div class="user" style="display: flex;">
+                <ul class="user" id="list1">
+                    <li><img src="{% static 'images/11.png' %}" alt=""><a href="#">Profile</a></li>
+                </ul>
+                <ul class="user" id="list2">
+                    <li><img src="{% static 'images/1231.png ' %}" alt=""><a href="#">Message</a></li>
+                </ul>
+                <ul class="user" id="list3">
+                    <li><img src="{% static 'images/1.png ' %}" alt=""><a href="#">Orders</a></li>
+                </ul>
+                <ul class="user" id="list4">
+                    <li><img src="{% static 'images/2.png ' %}" alt=""><a href="#">Mycart</a></li>
+                </ul>
+            </div>
+    </header>
+    <hr>
+   <div class="navbar">
+    <nav>
+        <ul class="menu">
+            <li><a href="#">All category</a></li>
+            <li><a href="#">Hot offers</a></li>
+            <li><a href="#">Gift boxes</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Menu item</a></li>
+            <li><a href="#">Help</a></li>
+          
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            &#9776; <!-- Hamburger Icon -->
+          </div>
+    </nav>
+    <div class="region">
+        <ul>
+            <li><a href="#">English,USD</a></li>
+            <li><a href="#">Ship to <img src="{% static 'images/icon.png' %}" alt=""></a></li>
+
+        </ul>
+    </div>
+   </div>
+   <script>
+    function toggleMenu() {
+const menu = document.querySelector(".menu");
+menu.classList.toggle("active");
+}
+  </script>
+   <hr>
+
+      <!-- /* MAIN PART */ -->
+
+   <div class="main-container">
+    <div class="row">
+        <div class="col-3 sublist" >
+            <ul>
+                <li><a href="#">Automobiles</a></li>
+                <li><a href="#">Clothes and wear</a></li>
+                <li><a href="#">Home interiors</a></li>
+                <li><a href="#">Computer and tech</a></li>
+                <li><a href="#">Tool,equipments</a></li>
+                <li><a href="#">Sports and outdoor</a></li>
+                <li><a href="#">Animal and pets</a></li>
+                <li><a href="#">Machinery tools</a></li>
+                <li><a href="#">More category</a></li>
+            </ul>
+         
+        </div>
+        {% for banners in ban %}
+        <div class="col-7 main_image" style="background-image: url('{{ banners.image.url }}');">
+             <h2><b>{{banners.title}}</b></h2>
+             <button>Learn more</button>
+        </div>
+        {% endfor %}
+        <div class="col-2 user_right_section">
+            <div class="row user_profile">
+                <h3> <img src="{% static 'images/Avatar.png' %}" alt="">Hi,user <br>let's get started</h3>
+                <button class="button2">Join now</button>
+                <a href="{% url 'account' %}"><button class="button3">Log in</button></a>
+            </div>
+            <div class="row new_supplier" style="background-color: rgba(243, 131, 50, 1); margin-bottom: 8%; border-radius: 12px;">
+                <h4>Get US $10 off with a new supplier</h4>
+            </div>
+            <div class="row send_quotes" style="background-color: rgba(85, 189, 195, 1); margin-bottom: 8%; border-radius: 12px;">
+                <h4>Send quotes with supplier preferences</h4>
+            </div>
+        </div>
+    </div>
+   </div>
+
+
+<!-- Second Part -->
+
+<div class="small_container">
+    <div class="row small_row">
+        <div class="col-2 deals">
+            <h2>Deals and Offers</h2>
+            <h3>Hygiene equipments</h3>
+            <div class="offer-timer">
+                <div id="countdown">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <p>Days</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <p>Hours</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <p>Minutes</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <p>Seconds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+               {% for discont in discount %}
+        <div class="col-2 objects">
+            <img src="{{ discont.image.url }}">
+            <h3>{{ discont.title }}</h3>
+            <h4>{{ discont.discounts }}%</h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+<!-- Third Part-Home Applians -->
+<div class="application_container">
+    <div class="row applicanz" >
+        {% for side in side_ban %}
+        <div class="col-2 outdoors" style="background-image: url('{{ side.image.url }}');">
+            <h2>{{ side.title }}</h2>
+            <button class="button4">Source now</button>
+        </div>
+        {% endfor %}
+
+        <div class="col-10 appli">   
+       <div class="row out">
+        {% for item in items|slice:":8" %}
+                <div class="col-2 appliance" style="width: 25%;">
+                    <h5>{{ item.title }}</h5>
+                    <h6>${{ item.price }}</h6>
+                    <img src="{{ item.image.url }}" alt="">
+                </div>
+                {% endfor %}
+            </div 
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Fourth Part Gadgets -->
+
+<div class="gadgets_container">
+    <div class="row applicanz" >
+        <div class="col-2 gadgets" style="background-image: url('{% static 'images/image 98.png' %}');">
+            <h2>Consumer <br>Electronics and  <br>gadgets</h2>
+            <button class="button4">Source now</button>
+        </div>
+        <div class="col-10 appli">   
+            <div class="row out">
+                {% for item in items|slice:":8" %}
+                <div class="col-2 appliance" style="width: 25%;">
+                    <h5>{{ item.title }}</h5>
+                    <h6>${{ item.price }}</h6>
+                    <img src="{{ item.image.url }}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+   
+    </div>
+    </div>
+</div>
+
+<!-- Fifth Part Banner With message box -->
+
+<div class="container banner" style="background-image: url('{% static 'images/image 102.png' %}');">
+    <div class="row ban">
+        <div class="col-4 banner_box">
+            <img src=" {% static 'images/Rectangle 299 (1).png' %}" alt="">
+            <h2>An easy way to send request to all suppliers</h2>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius quisquam magni modi rem officia tenetur </p>
+        </div>
+        <div class="col-4 messeg" style="width: 50%;margin:5% 0% 0% 44%;">
+            <h2>Send quote to suppliers</h2>
+               <h3>What item you need?</h3>
+            <input class="messag" type="text" name="message" placeholder="Type more details">
+            <div style="display: flex;">
+                <h5 class="quantity">Quantity </h5>
+                <select id="pcs" name="pcs">
+                    <option value="Pcs">Pcs</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>              
+        </div>
+    </div>
+</div>
+
+
+<!-- Sixth Part Items Display -->
+
+<div class="container">
+    <h2 class="recom">Recommended items</h2>
+    <div class="row">
+<div class="recommended">
+    <div class="row row33">
+        {% for item in items|slice:":12" %}
+        <div class="col-2 reccom">
+            <img src="{{ item.image.url }}" alt="">
+            <h4>${{ item.price }}</h4>
+            <h6>{{ item.title }}</h6>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+        
+</div>
+</div>
+
+<!-- Extra Services -->
+
+<div class="container">
+    <h2 class="extra">Our extra services</h2>
+    <div class="row">
+        {% for service in serv  %}
+        <div class="col-3 extra_service">
+            <img src="{{ service.image.url }}" alt="">
+            <h3>{{ service.title }}</h3>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<!-- Suppliers By Region -->
+
+<div class="container sup">
+    <h2>Suppliers by region</h2>
+    <div class="row">
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+        <div class="col-2 suppliers_region">
+            <div class="country">
+                <img src=" {% static 'images/123.png' %}" alt="">
+            </div>
+            <div class="country_name">
+            <h5>Emirates</h5>
+            <h6>shopname.ae</h6>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Subscriibe Box -->
+<div class="section" style="padding-top: 4%;">
+    <div class="subscribe">
+        <h2>Subscribe on your newsletter</h2>
+        <h6>Get daily news on upcoming offers from many suppliers from all over world</h6>
+        <form action="#">
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 prosp">
+                <img src=" {% static 'images/logo-colored.png' %}" alt="">
+                <h3>Best information about the company gies here but know lorem ipsum is</h3>
+               
+            </div>
+
+            <div class="col-2 our-ser">
+                <h2>About</h2>
+                <ul>
+                    <li><a href="#"> About Us</a></li>
+                    <li><a href="#">Find store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 explore">
+                <h2>Partnership</h2>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Find store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 explore">
+                <h2>Information</h2>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Money Refund</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2 explore">
+                <h2>For users</h2>
+                <ul>
+                    <li><a href="#">Login </a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">My Orders</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-2 explore">
+                <h2>Get App</h2>
+                <ul >
+                      <img class="appstore" src=" {% static 'images/market-button.png' %}" alt="">
+                      <img class="playstore" src=" {% static 'images/market-button.png' %}" alt="">
+
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+      <hr style="color:#d0d0d0; border:2px solid #f4f9f9;">
+        
+</footer>
+
+<script>
+    function toggleDropdown(element) {
+        const dropdown = element.parentElement;
+        dropdown.classList.toggle('open');
+    }
+</script>
+
+<script>
+    // Set the end date for the offer
+const offerEndDate = new Date("2025-01-15T23:59:59").getTime();
+
+function updateTimer() {
+const now = new Date().getTime();
+const timeLeft = offerEndDate - now;
+
+if (timeLeft > 0) {
+    // Calculate days, hours, minutes, and seconds
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Update the HTML elements
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+} else {
+    // When the countdown is over
+    document.getElementById("countdown").innerHTML = "<h3>Offer Expired!</h3>";
+}
+}
+
+// Update the timer every second
+setInterval(updateTimer, 1000);
+
+// Initialize the timer
+updateTimer();
+
+</script>
+   </body>
+   </html>
